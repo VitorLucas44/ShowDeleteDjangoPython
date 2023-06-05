@@ -1,0 +1,16 @@
+{% extends 'templates/base.html' %}
+
+
+{% block content %}
+<h1>Liste des membres</h1>
+<a href="{% url 'add_member' %}">Ajouter un membre</a>
+
+<ul>
+  {% for member in members %}
+  <li>
+    {{ member.name }}
+    <a href="{% url 'delete_member' member.id %}">Supprimer</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock  %}

@@ -1,0 +1,19 @@
+{% extends 'templates/base.html' %}
+
+{% block content %}
+<h1>Ajouter une voiture</h1>
+<form method="post" action="{% url 'add_car' %}">
+  {% csrf_token %}
+  <label for="brand">Marque:</label>
+  <input type="text" name="brand" required>
+  <label for="year">Année:</label>
+  <input type="number" name="year" required>
+  <label for="color">Couleur:</label>
+  <input type="text" name="color" required>
+  <label for="price">Prix:</label>
+  <input type="number" name="price" required>
+  <label for="discount">Réduction (%):</label>
+  <input type="number" name="discount">
+  <button type="submit">Ajouter</button>
+</form>
+{% endblock content %}

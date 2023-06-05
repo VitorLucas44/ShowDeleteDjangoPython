@@ -1,0 +1,19 @@
+{% extends 'templates/base.html' %}
+
+
+{% block content %}
+<h1>Liste des voitures</h1>
+<a href="{% url 'add_car' %}">Ajouter une voiture</a>
+
+<ul>
+  {% for car in cars %}
+  <li>
+    {{ car.brand }}, {{ car.year }}, {{ car.price }}
+    {% if car.discount > 0 %}
+    -{{ car.price|discounted_price:car.discount }}, {{ car.discount }}%
+    {% endif %}
+    <a href="{% url 'delete_car' car.id %}">Supprimer</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}
